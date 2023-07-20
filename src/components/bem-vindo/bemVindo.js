@@ -22,7 +22,10 @@ export const WelcomeScreen = () => {
           <h4>Olá</h4>
           <p>seja muito bem-vindo</p>
           <button className="btn-primary" onClick={handleClick}>fazer login</button><br/>
-          <button className="btn-text">continuar sem login</button>
+          <p>
+            ainda não tem conta?{" "}
+            <span className="btn-text btn-register">cadastre-se</span>
+          </p>
         </div>
       </div>
     </div>

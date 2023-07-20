@@ -76,10 +76,7 @@ export const Login = () => {
             <img src={googleIcon} alt="google-icon" />
             entrar com Google
           </button>
-          <p>
-            ainda não tem conta?{" "}
-            <span className="btn-text btn-register">cadastre-se</span>
-          </p>
+         
         </div>
         <img
           src={rachadinha}

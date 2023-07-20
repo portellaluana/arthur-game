@@ -61,11 +61,11 @@ p {
   color: var(--gray-off);
 }
 
-
 .btn-google{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0;
 }
 
 .btn-forgot-password{
@@ -161,12 +161,12 @@ p {
   align-items: center;
   position: fixed;
   left: calc((100vw - 328px)/2);
-  top: calc((100vh - 318px)/2);
+  top: calc((100vh - 257px)/2);
 }
 
 .modal-login-container-active{
   width: 328px;
-  height: 366px;
+  height: 333px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;

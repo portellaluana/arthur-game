@@ -5,8 +5,10 @@ import { Login } from "./components/login/Login";
 function App() {
   return (
     <Provider>
+
       <ViewPoint />
       <Login/>
+      
     </Provider>
   );
 }
