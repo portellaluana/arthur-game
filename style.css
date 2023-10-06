@@ -2,9 +2,8 @@ body {
    margin: 0;
    padding: 0;
    display: flex;
-   justify-content: center;
-   align-items: center;
+   justify-content:flex-start;
+   align-items:start;
    width: 100vw;
    height: 100vh;
-   background-color: white;
 }

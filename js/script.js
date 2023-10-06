@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 761,
-  height: 1365,
+  width: 1080,
+  height: 1920,
   physics: {
     default: "arcade",
   },
@@ -65,22 +65,22 @@ let randomSort;
 const game = new Phaser.Game(config);
 
 function preload() {
-  this.load.image("chocolatinho", "assets/images/frases/chocolatinho.png");
-  this.load.image("mamae-escolhe", "assets/images/frases/mamae-escolhe.png");
-  this.load.image("arthur-escolhe", "assets/images/frases/arthur-escolhe.png");
-  this.load.image("fruta", "assets/images/frases/fruta.png");
-  this.load.image("picole", "assets/images/frases/picole.png");
-  this.load.image("sorvete", "assets/images/frases/sorvete.png");
+  this.load.image("chocolatinho-txt", "assets/images/frases/chocolatinho.png");
+  this.load.image("mamae-escolhe-txt", "assets/images/frases/mamae-escolhe.png");
+  this.load.image("arthur-escolhe-txt", "assets/images/frases/arthur-escolhe.png");
+  this.load.image("fruta-txt", "assets/images/frases/fruta.png");
+  this.load.image("picole-txt", "assets/images/frases/picole.png");
+  this.load.image("sorvete-txt", "assets/images/frases/sorvete.png");
 
   for (item of spin) {
     this.load.image(item.name, item.src);
   }
 
-  this.load.image("disabledButton", "assets/images/disabled-button.svg");
+  this.load.image("disabledButton", "assets/images/disabled-button.png");
   this.load.image("button", "assets/images/button.svg");
   this.load.image("bg", "assets/images/bg.png");
   this.load.image("sobremesa", "assets/images/sobremesa.png");
-  this.load.image("textDefault", "assets/images/frases/default.png");
+  this.load.image("textDefault-txt", "assets/images/frases/default.png");
 
   // this.load.image("winline", "assets/images/winline.png");
 }
@@ -88,17 +88,17 @@ function preload() {
 function create() {
   enabledButton = true;
 
-  slot = this.add.container(400, 410);
+  slot = this.add.container(560, 600);
   for (i = 0; i < 8; i++) {
-    let symbol = this.add.image(0, 100 * i, spin[i].name);
+    let symbol = this.add.image(0, 600 * i, spin[i].name);
     slot.add(symbol);
     symbols.push(symbol);
   }
 
-  this.add.image(380, 682, "bg");
-  this.add.image(380, 200, "sobremesa");
+  this.add.image(540, 940, "bg");
+  this.add.image(560, 320, "sobremesa");
 
-  button = this.add.sprite(400, 1160, "button").setInteractive();
+  button = this.add.sprite(540, 1550, "button").setInteractive();
   button.on("pointerdown", function () {
     move1 = true;
     spinCount = 0;
@@ -107,7 +107,7 @@ function create() {
     console.log(`Teste sorteio: ${randomSort.name}`);
   });
 
-  this.add.image(400, 1160, "button");
+  this.add.image(540, 1550, "button");
   
 }
 
@@ -119,13 +119,13 @@ function update() {
     if (move1) {
       if (enabledButton) {
         enabledButton = false;
-        textDefault = this.add.image(400, 890, "textDefault");
+        textDefault = this.add.image(560, 1250, "textDefault-txt");
 
         if (text) {
           text.destroy();
         }
 
-        this.add.image(400, 1160, "disabledButton");
+        this.add.image(540, 1550, "disabledButton");
         button.input.enabled = false;
       }
     } else {
@@ -134,35 +134,35 @@ function update() {
 
         switch (nameText) {
           case "chocolatinho":
-            text = this.add.image(400, 890, "chocolatinho");
+            text = this.add.image(560, 1250, "chocolatinho-txt");
             break;
           case "fruta-2":
-            text = this.add.image(400, 890, "fruta");
+            text = this.add.image(560, 1250, "fruta-txt");
             break;
           case "fruta-3":
-            text = this.add.image(400, 890, "fruta");
+            text = this.add.image(560, 1250, "fruta-txt");
             break;
           case "fruta-4":
-            text = this.add.image(400, 890, "fruta");
+            text = this.add.image(560, 1250, "fruta-txt");
             break;
           case "arthur-escolhe":
-            text = this.add.image(400, 890, "arthur-escolhe");
+            text = this.add.image(560, 1250, "arthur-escolhe-txt");
             break;
           case "mamae-escolhe":
-            text = this.add.image(400, 890, "mamae-escolhe");
+            text = this.add.image(560, 1250, "mamae-escolhe-txt");
             break;
           case "sorvete":
-            text = this.add.image(400, 890, "sorvete");
+            text = this.add.image(560, 1250, "sorvete-txt");
             break;
           case "picole":
-            text = this.add.image(400, 890, "picole");
+            text = this.add.image(560, 1250, "picole-txt");
             break;
           default:
-            text = this.add.image(400, 890, "textDefault");
+            text = this.add.image(560, 1250, "textDefault-txt");
         }
 
         enabledButton = true;
-        this.add.image(400, 1160, "button");
+        this.add.image(540, 1550, "button");
         button.input.enabled = true;
       }
     }
@@ -173,22 +173,33 @@ function updateSlot(slot, randomSymbol, move) {
   let symbols = slot.list;
   if (move) {
     symbols.forEach((symbol) => {
-      symbol.y += 10;
-      if (symbol.y > 300) {
+      symbol.y += 50;
+      if (symbol.y > 600) {
         symbol.y -= symbols.length * 100;
       }
+      const frameCenterY = 300;
+      const symbolHeight = 600;
+      
+// symbol.y
+// symbol.y  10
+// symbol.y  -190
+// symbol.y  410
+// symbol.y  1010
+// symbol.y  1610
+// symbol.y  2210
+// symbol.y  2810
+// symbol.y  3410
 
-      const frameCenterY = 138;
-      const symbolHeight = 100;
+// console.log('slot.x ', slot.x )
 
-      if (slot.x == 400) {
+if (slot.x == 560) {
         if (
           symbol.y <= frameCenterY &&
           symbol.y + symbolHeight > frameCenterY
         ) {
           const symbolName = symbol.texture.key;
           if (randomSymbol == symbolName) spinCount++;
-          if (spinCount == 30) move1 = false;
+          if (spinCount == 50) move1 = false;
         }
       }
     });
