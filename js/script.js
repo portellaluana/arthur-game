@@ -100,7 +100,7 @@ function preload() {
 
 function create() {
   enabledButton = true;
-  this.add.image(gameWidth/2, gameHeight/2, "bg-slot");
+  this.add.image(gameWidth/2, ((gameHeight/2)), "bg-slot");
   
   slot = this.add.container(gameWidth/2, ((gameHeight/2)*.9));
   for (i = 0; i < 9; i++) {
@@ -115,7 +115,7 @@ function create() {
   textDefaultShow = this.add.image(gameWidth/2, ((gameHeight/2)*1.35), "textDefault-txt");
 
 
-  button = this.add.sprite(gameWidth/2, ((gameHeight/2)*1.73), "button").setInteractive();
+  button = this.add.sprite(gameWidth/2, ((gameHeight/2)*1.75), "button").setInteractive();
   button.on("pointerdown", function () {
     move1 = true;
     spinCount = 0;
@@ -124,7 +124,7 @@ function create() {
     console.log(`Teste sorteio: ${randomSort.name}`);
   });
 
-  this.add.image(gameWidth/2, ((gameHeight/2)*1.73), "button");
+  this.add.image(gameWidth/2, ((gameHeight/2)*1.75), "button");
 }
 
 function update() {
@@ -142,7 +142,7 @@ function update() {
           text.destroy();
         }
 
-        this.add.image(gameWidth/2, ((gameHeight/2)*1.73), "disabledButton");
+        this.add.image(gameWidth/2, ((gameHeight/2)*1.75), "disabledButton");
         button.input.enabled = false;
       }
     } else {
@@ -173,7 +173,7 @@ function update() {
         }
 
         enabledButton = true;
-        this.add.image(gameWidth/2, ((gameHeight/2)*1.73), "button");
+        this.add.image(gameWidth/2, ((gameHeight/2)*1.75), "button");
         button.input.enabled = true;
       }
     }
