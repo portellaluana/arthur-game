@@ -1,7 +1,7 @@
 const config = {
   type: Phaser.AUTO,
-  width: 1080,
-  height: 1920,
+  width: window.innerWidth,
+  height: window.innerHeight,
   physics: {
     default: "arcade",
   },
@@ -64,7 +64,8 @@ let symbols = [];
 let slot;
 let enabledButton;
 let randomSort;
-
+let gameWidth = window.innerWidth;
+let gameHeight = window.innerHeight;
 const game = new Phaser.Game(config);
 
 function preload() {
@@ -99,7 +100,8 @@ function preload() {
 
 function create() {
   enabledButton = true;
-  this.add.image(556, 960, "bg-slot");
+
+  this.add.image(gameWidth / 2, ((gameHeight/2)*1.1), "bg-slot");
   
   slot = this.add.container(556, 860);
   for (i = 0; i < 9; i++) {
@@ -109,13 +111,13 @@ function create() {
     symbols.push(symbol);
   }
   
-  this.add.image(556, 960, "bg");
-  this.add.image(556, 290, "sobremesa");
-  this.add.image(556, 525, "arrow-bottom");
-  textDefaultShow = this.add.image(556, 1270, "textDefault-txt");
+  this.add.image(gameWidth / 2, ((gameHeight/2)*1.1), "bg");
+  this.add.image(gameWidth / 2, 290, "sobremesa");
+  this.add.image(gameWidth / 2, 525, "arrow-bottom");
+  textDefaultShow = this.add.image(gameWidth / 2, 1270, "textDefault-txt");
 
 
-  button = this.add.sprite(556, 1650, "button").setInteractive();
+  button = this.add.sprite(gameWidth / 2, ((gameHeight/2)*1.8), "button").setInteractive();
   button.on("pointerdown", function () {
     move1 = true;
     spinCount = 0;
@@ -124,7 +126,7 @@ function create() {
     console.log(`Teste sorteio: ${randomSort.name}`);
   });
 
-  this.add.image(556, 1650, "button");
+  this.add.image(gameWidth / 2, ((gameHeight/2)*1.8), "button");
 }
 
 function update() {
@@ -136,13 +138,13 @@ function update() {
       textDefaultShow.destroy();
       if (enabledButton) {
         enabledButton = false;
-        textDefault = this.add.image(556, 1270, "textDefault-txt");
+        textDefault = this.add.image(gameWidth / 2, 1270, "textDefault-txt");
 
         if (text) {
           text.destroy();
         }
 
-        this.add.image(556, 1650, "disabledButton");
+        this.add.image(gameWidth / 2, ((gameHeight/2)*1.8), "disabledButton");
         button.input.enabled = false;
       }
     } else {
@@ -151,29 +153,29 @@ function update() {
 
         switch (nameText) {
           case "chocolatinho":
-            text = this.add.image(556, 1270, "chocolatinho-txt");
+            text = this.add.image(gameWidth / 2, 1270, "chocolatinho-txt");
             break;
           case "fruta":
-            text = this.add.image(556, 1270, "fruta-txt");
+            text = this.add.image(gameWidth / 2, 1270, "fruta-txt");
             break;
           case "arthur-escolhe":
-            text = this.add.image(556, 1270, "arthur-escolhe-txt");
+            text = this.add.image(gameWidth / 2, 1270, "arthur-escolhe-txt");
             break;
           case "mamae-escolhe":
-            text = this.add.image(556, 1270, "mamae-escolhe-txt");
+            text = this.add.image(gameWidth / 2, 1270, "mamae-escolhe-txt");
             break;
           case "sorvete":
-            text = this.add.image(556, 1270, "sorvete-txt");
+            text = this.add.image(gameWidth / 2, 1270, "sorvete-txt");
             break;
           case "picole":
-            text = this.add.image(556, 1270, "picole-txt");
+            text = this.add.image(gameWidth / 2, 1270, "picole-txt");
             break;
           default:
-            text = this.add.image(556, 1270, "textDefault-txt");
+            text = this.add.image(gameWidth / 2, 1270, "textDefault-txt");
         }
 
         enabledButton = true;
-        this.add.image(556, 1650, "button");
+        this.add.image(gameWidth / 2, ((gameHeight/2)*1.8), "button");
         button.input.enabled = true;
       }
     }
@@ -183,7 +185,7 @@ function update() {
 function updateSlot(slot, randomSymbol) {
   let symbols = slot.list;
   const symbolWidth = 595;
-  const centerX = 270;
+  const centerX = gameWidth / 2;
 
   if (move1) {
     symbols.forEach((symbol) => {
