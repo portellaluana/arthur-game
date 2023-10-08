@@ -99,9 +99,9 @@ function preload() {
 
 function create() {
   enabledButton = true;
-  this.add.image(540, 940, "bg-slot");
+  this.add.image(556, 960, "bg-slot");
   
-  slot = this.add.container(540, 860);
+  slot = this.add.container(556, 860);
   for (i = 0; i < 9; i++) {
     let symbol = this.add.image(595 * i, 0, spin[i].name);
     
@@ -109,13 +109,13 @@ function create() {
     symbols.push(symbol);
   }
   
-  this.add.image(540, 960, "bg");
-  this.add.image(540, 290, "sobremesa");
-  this.add.image(540, 525, "arrow-bottom");
-  textDefaultShow = this.add.image(540, 1270, "textDefault-txt");
+  this.add.image(556, 960, "bg");
+  this.add.image(556, 290, "sobremesa");
+  this.add.image(556, 525, "arrow-bottom");
+  textDefaultShow = this.add.image(556, 1270, "textDefault-txt");
 
 
-  button = this.add.sprite(540, 1650, "button").setInteractive();
+  button = this.add.sprite(556, 1650, "button").setInteractive();
   button.on("pointerdown", function () {
     move1 = true;
     spinCount = 0;
@@ -124,7 +124,7 @@ function create() {
     console.log(`Teste sorteio: ${randomSort.name}`);
   });
 
-  this.add.image(540, 1650, "button");
+  this.add.image(556, 1650, "button");
 }
 
 function update() {
@@ -136,13 +136,13 @@ function update() {
       textDefaultShow.destroy();
       if (enabledButton) {
         enabledButton = false;
-        textDefault = this.add.image(540, 1270, "textDefault-txt");
+        textDefault = this.add.image(556, 1270, "textDefault-txt");
 
         if (text) {
           text.destroy();
         }
 
-        this.add.image(540, 1650, "disabledButton");
+        this.add.image(556, 1650, "disabledButton");
         button.input.enabled = false;
       }
     } else {
@@ -151,29 +151,29 @@ function update() {
 
         switch (nameText) {
           case "chocolatinho":
-            text = this.add.image(540, 1270, "chocolatinho-txt");
+            text = this.add.image(556, 1270, "chocolatinho-txt");
             break;
           case "fruta":
-            text = this.add.image(540, 1270, "fruta-txt");
+            text = this.add.image(556, 1270, "fruta-txt");
             break;
           case "arthur-escolhe":
-            text = this.add.image(540, 1270, "arthur-escolhe-txt");
+            text = this.add.image(556, 1270, "arthur-escolhe-txt");
             break;
           case "mamae-escolhe":
-            text = this.add.image(540, 1270, "mamae-escolhe-txt");
+            text = this.add.image(556, 1270, "mamae-escolhe-txt");
             break;
           case "sorvete":
-            text = this.add.image(540, 1270, "sorvete-txt");
+            text = this.add.image(556, 1270, "sorvete-txt");
             break;
           case "picole":
-            text = this.add.image(540, 1270, "picole-txt");
+            text = this.add.image(556, 1270, "picole-txt");
             break;
           default:
-            text = this.add.image(540, 1270, "textDefault-txt");
+            text = this.add.image(556, 1270, "textDefault-txt");
         }
 
         enabledButton = true;
-        this.add.image(540, 1650, "button");
+        this.add.image(556, 1650, "button");
         button.input.enabled = true;
       }
     }
