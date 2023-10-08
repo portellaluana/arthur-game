@@ -94,7 +94,7 @@ function preload() {
 
 function create() {
   enabledButton = true;
-  this.add.image(540, 937, "bg-slot");
+  this.add.image(538, 937, "bg-slot");
   
   slot = this.add.container(545, 860);
   for (i = 0; i < 8; i++) {
@@ -104,7 +104,7 @@ function create() {
     symbols.push(symbol);
   }
   
-  this.add.image(540, 959, "bg");
+  this.add.image(538, 959, "bg");
   this.add.image(545, 290, "sobremesa");
   this.add.image(545, 517, "arrow-bottom");
   textDefaultShow = this.add.image(560, 1270, "textDefault-txt");
