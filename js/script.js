@@ -183,7 +183,7 @@ function update() {
 function updateSlot(slot, randomSymbol) {
   let symbols = slot.list;
   const symbolWidth = (gameWidth/2)*1.25;
-  const centerX = 270;
+  const centerX = gameWidth/2;
 
   if (move1) {
     symbols.forEach((symbol) => {
