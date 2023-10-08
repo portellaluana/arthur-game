@@ -15,12 +15,15 @@ const config = {
 let sobremesa;
 let button;
 let disabledButton;
-
 let textDefaultShow;
 let textDefault;
 let text;
 
 let spin = [
+  {
+    src: "./assets/images/symbols/default-img.png",
+    name: "default-img",
+  },
   {
     src: "./assets/images/symbols/arthur-escolhe.png",
     name: "arthur-escolhe",
@@ -90,27 +93,29 @@ function preload() {
   this.load.image("bg-slot", "assets/images/bg-slot.png");
   this.load.image("sobremesa", "assets/images/sobremesa.png");
   this.load.image("textDefault-txt", "assets/images/frases/default.png");
+  this.load.image("default-img", "assets/symbols/images/default-img.png");
+
 }
 
 function create() {
   enabledButton = true;
-  this.add.image(538, 937, "bg-slot");
+  this.add.image(540, 940, "bg-slot");
   
-  slot = this.add.container(545, 860);
-  for (i = 0; i < 8; i++) {
-    let symbol = this.add.image(655 * i, 0, spin[i].name);
+  slot = this.add.container(540, 860);
+  for (i = 0; i < 9; i++) {
+    let symbol = this.add.image(595 * i, 0, spin[i].name);
     
     slot.add(symbol);
     symbols.push(symbol);
   }
   
-  this.add.image(538, 959, "bg");
-  this.add.image(545, 290, "sobremesa");
-  this.add.image(545, 517, "arrow-bottom");
-  textDefaultShow = this.add.image(560, 1270, "textDefault-txt");
+  this.add.image(540, 960, "bg");
+  this.add.image(540, 290, "sobremesa");
+  this.add.image(540, 525, "arrow-bottom");
+  textDefaultShow = this.add.image(540, 1270, "textDefault-txt");
 
 
-  button = this.add.sprite(545, 1650, "button").setInteractive();
+  button = this.add.sprite(540, 1650, "button").setInteractive();
   button.on("pointerdown", function () {
     move1 = true;
     spinCount = 0;
@@ -119,7 +124,7 @@ function create() {
     console.log(`Teste sorteio: ${randomSort.name}`);
   });
 
-  this.add.image(545, 1650, "button");
+  this.add.image(540, 1650, "button");
 }
 
 function update() {
@@ -131,7 +136,7 @@ function update() {
       textDefaultShow.destroy();
       if (enabledButton) {
         enabledButton = false;
-        textDefault = this.add.image(560, 1270, "textDefault-txt");
+        textDefault = this.add.image(540, 1270, "textDefault-txt");
 
         if (text) {
           text.destroy();
@@ -146,25 +151,25 @@ function update() {
 
         switch (nameText) {
           case "chocolatinho":
-            text = this.add.image(545, 1270, "chocolatinho-txt");
+            text = this.add.image(540, 1270, "chocolatinho-txt");
             break;
           case "fruta":
-            text = this.add.image(545, 1270, "fruta-txt");
+            text = this.add.image(540, 1270, "fruta-txt");
             break;
           case "arthur-escolhe":
-            text = this.add.image(545, 1270, "arthur-escolhe-txt");
+            text = this.add.image(540, 1270, "arthur-escolhe-txt");
             break;
           case "mamae-escolhe":
-            text = this.add.image(545, 1270, "mamae-escolhe-txt");
+            text = this.add.image(540, 1270, "mamae-escolhe-txt");
             break;
           case "sorvete":
-            text = this.add.image(545, 1270, "sorvete-txt");
+            text = this.add.image(540, 1270, "sorvete-txt");
             break;
           case "picole":
-            text = this.add.image(545, 1270, "picole-txt");
+            text = this.add.image(540, 1270, "picole-txt");
             break;
           default:
-            text = this.add.image(545, 1270, "textDefault-txt");
+            text = this.add.image(540, 1270, "textDefault-txt");
         }
 
         enabledButton = true;
@@ -177,25 +182,23 @@ function update() {
 
 function updateSlot(slot, randomSymbol) {
   let symbols = slot.list;
-  const symbolHeight = 655;
-  const centerX = 210;
+  const symbolWidth = 595;
+  const centerX = 270;
 
   if (move1) {
     symbols.forEach((symbol) => {
       symbol.x += 50;
      
-      if (symbol.x > symbolHeight) {
-        symbol.x -= symbols.length * symbolHeight;
-      }
+      if (symbol.x > symbolWidth) {
+        symbol.x -= symbols.length * symbolWidth;
+      } 
         if (
           symbol.x <= centerX &&
-          symbol.x + symbolHeight > centerX
+          symbol.x + symbolWidth > centerX
         ) {
           const symbolName = symbol.texture.key;
           if (randomSymbol == symbolName) spinCount++;
-          if (spinCount == 10) {
-            console.log('symbol.x',symbol.x)
-            console.log('symbol.y',symbol.y)
+          if (spinCount == 15) {
             move1 = false;
           }
 
@@ -209,28 +212,28 @@ function randomNumber() {
   let spinRandom;
 
   if (randomNumberDraw <= 12) {
-    spinRandom = spin[0];
-  }
-  if (randomNumberDraw > 12 && randomNumberDraw <= 24) {
     spinRandom = spin[1];
   }
-  if (randomNumberDraw > 24 && randomNumberDraw <= 36) {
+  if (randomNumberDraw > 12 && randomNumberDraw <= 24) {
     spinRandom = spin[2];
   }
-  if (randomNumberDraw > 36 && randomNumberDraw <= 48) {
+  if (randomNumberDraw > 24 && randomNumberDraw <= 36) {
     spinRandom = spin[3];
   }
-  if (randomNumberDraw > 48 && randomNumberDraw <= 60) {
+  if (randomNumberDraw > 36 && randomNumberDraw <= 48) {
     spinRandom = spin[4];
   }
-  if (randomNumberDraw > 60 && randomNumberDraw <= 72) {
+  if (randomNumberDraw > 48 && randomNumberDraw <= 60) {
     spinRandom = spin[5];
   }
-  if (randomNumberDraw > 72 && randomNumberDraw <= 84) {
+  if (randomNumberDraw > 60 && randomNumberDraw <= 72) {
     spinRandom = spin[6];
   }
-  if (randomNumberDraw > 84 && randomNumberDraw <= 100) {
+  if (randomNumberDraw > 72 && randomNumberDraw <= 84) {
     spinRandom = spin[7];
+  }
+  if (randomNumberDraw > 84 && randomNumberDraw <= 100) {
+    spinRandom = spin[8];
   }
   return spinRandom;
   // return spin[2];
