@@ -1,0 +1,1 @@
+Jogo versão mobile.
