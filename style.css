@@ -1,4 +1,10 @@
-@media screen and (max-width: 1023px) {
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content:center;
+}
+/* @media screen and (max-width: 1023px) {
   body {
    margin: 0;
    padding: 0;
@@ -27,4 +33,4 @@
    canvas{
      display: none;
    }
-}
+} */
