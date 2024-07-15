@@ -1,1 +1,1 @@
-Jogo versão mobile.
+JOGO VERSÃO MOBILE
