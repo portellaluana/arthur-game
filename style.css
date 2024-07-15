@@ -1,4 +1,4 @@
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 766px) {
   body {
    margin: 0;
    padding: 0;
@@ -11,7 +11,7 @@
 }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 767px) {
   h1 {
      position: absolute;
      width: 100vw;
